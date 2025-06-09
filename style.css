@@ -1,0 +1,1239 @@
+/* --- Variables CSS (Asegúrate de que estas estén al principio de tu archivo) --- */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --accent-color: #ff6f00; /* Naranja/dorado para destacar */
+    --secondary-color: #6c757d; /* Gris para texto secundario */
+    --text-color-dark: #343a40; /* Texto oscuro */
+    --text-color-light: #f8f9fa; /* Texto claro (para fondos oscuros) */
+    --bg-light: #f8f9fa; /* Fondo claro */
+    --bg-dark: #212529; /* Fondo oscuro */
+    --header-bg: #fff; /* Fondo del header */
+    --footer-bg: #1a1a1a; /* Fondo del footer */
+    --danger-color: #dc3545; /* Rojo para alertas o eliminar */
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    --transition-speed: 0.3s;
+    --border-radius-lg: 15px;
+    --border-radius-sm: 8px;
+}
+
+/* --- Globales y Reset (Ajusta si ya los tienes) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: #f8f9fa;
+    overflow-x: hidden; /* Evitar scroll horizontal inesperado */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.bg-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-color-light);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-color-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.5em; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 2em; }
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px; /* Más redondeado para un look moderno */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.btn-donate {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: 2px solid var(--accent-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn-donate:hover {
+    background-color: #e66a00;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 111, 0, 0.4);
+}
+
+.big-btn {
+    padding: 18px 40px;
+    font-size: 1.2em;
+    border-radius: 60px;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all var(--transition-speed) ease;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo img {
+    height: 50px; /* Ajusta el tamaño de tu logo */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.main-header .logo img:hover {
+    transform: scale(1.05);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Alinear verticalmente los ítems del menú */
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-size: 1.05em;
+    padding: 5px 0;
+    position: relative;
+    transition: all var(--transition-speed) ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Efecto de subrayado en el menú */
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Grosor del subrayado */
+    background-color: var(--accent-color); /* Color del subrayado */
+    bottom: -5px;
+    left: 0;
+    transition: width var(--transition-speed) ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Botón de donación en el menú */
+.main-nav .donate-btn-container {
+    margin-left: 40px; /* Más espacio para el botón de donación */
+}
+
+.main-nav .donate-btn-container .btn-donate {
+    padding: 10px 25px;
+    font-size: 0.9em;
+    border-radius: 30px;
+}
+
+/* Administrador link (visible por defecto en admin pages, oculto en otras) */
+.admin-link-container {
+    display: none; /* Oculto por defecto en el JS para la página principal */
+}
+
+.menu-toggle {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--text-color-dark);
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-section .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-section .video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Asegura que el video cubra todo el espacio */
+}
+
+.hero-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Oscurece el video para que el texto sea legible */
+}
+
+.hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-section .hero-content h1 {
+    font-size: 4.5em; /* Título más grande */
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    font-weight: 700;
+}
+
+.hero-section .hero-content .tagline {
+    font-size: 1.6em;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+.hero-section .hero-content .hero-btn {
+    font-size: 1.1em;
+    padding: 15px 35px;
+    border-radius: 50px;
+}
+
+/* --- About Section (Quiénes Somos) --- */
+.about-section h2 {
+    margin-bottom: 60px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr 1.5fr; /* Imagen a la izquierda, texto a la derecha */
+    }
+}
+
+.about-image img {
+    width: 100%;
+    height: 450px; /* Altura fija para la imagen */
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-content-text .text-block h3 {
+    text-align: left;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.about-content-text .text-block p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.team-block {
+    margin-top: 50px;
+}
+
+.team-block h3 {
+    text-align: left;
+    margin-bottom: 25px;
+    color: var(--text-color-dark);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform var(--transition-speed) ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-color);
+    padding: 3px;
+}
+
+.team-member h4 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: var(--text-color-dark);
+}
+
+.team-member p {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+}
+
+/* --- Gallery Section (Galerías) --- */
+.gallery-section h2 {
+    margin-bottom: 60px;
+}
+
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.filter-btn {
+    background-color: #e9ecef;
+    color: var(--text-color-dark);
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    font-family: var(--font-body);
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.filter-btn.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 111, 0, 0.3);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item .item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: #fff;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .item-overlay {
+    transform: translateY(0);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item .item-overlay h3 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1.4em;
+    text-align: left;
+}
+
+.gallery-item .item-overlay p {
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0;
+    text-align: left;
+}
+
+
+/* --- Blog Section --- */
+.blog-section h2 {
+    margin-bottom: 60px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.blog-post {
+    background-color: #fff;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-post .post-content {
+    padding: 25px;
+}
+
+.blog-post .post-content h3 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.blog-post .post-content h3 a {
+    color: var(--text-color-dark);
+}
+
+.blog-post .post-content h3 a:hover {
+    color: var(--primary-color);
+}
+
+.blog-post .post-meta {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.blog-post .post-content p {
+    font-size: 1em;
+    color: var(--text-color-dark);
+    margin-bottom: 20px;
+}
+
+.blog-post .read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95em;
+    display: inline-block;
+}
+
+.blog-post .read-more:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+/* --- New Donation Section --- */
+.donations-section {
+    position: relative;
+    padding: 100px 0;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.donations-section .donation-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/donation-background.jpg') no-repeat center center/cover; /* Asegúrate de tener esta imagen */
+    filter: brightness(0.4); /* Oscurece la imagen para que el texto sea legible */
+    z-index: 0;
+}
+
+.donations-section .donation-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para el texto */
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.donations-section .donation-content h2 {
+    font-size: 3.5em;
+    color: #fff;
+    margin-bottom: 25px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+.donations-section .donation-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+}
+
+.donations-section .donation-content .big-btn {
+    font-size: 1.5em;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+}
+
+.donations-section .donation-content .small-text {
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.7);
+}
+
+/* --- New Book Promotion Section --- */
+.book-promo-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: var(--bg-light); /* Fondo claro para la sección */
+    overflow: hidden;
+}
+
+.book-promo-section .section-background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/pattern-subtle-light.png'); /* Un patrón sutil de fondo */
+    background-repeat: repeat;
+    opacity: 0.1; /* Ligera transparencia */
+    z-index: 0;
+}
+
+.book-promo-section .container {
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté sobre el patrón */
+}
+
+.book-promo-content {
+    display: flex;
+    flex-direction: column; /* Por defecto en móvil, columna */
+    align-items: center;
+    gap: 60px; /* Espacio entre los elementos */
+}
+
+@media (min-width: 992px) {
+    .book-promo-content {
+        flex-direction: row; /* En desktop, fila */
+        justify-content: center;
+        text-align: left;
+    }
+}
+
+.book-visual {
+    position: relative;
+    flex-shrink: 0; /* No encoger la imagen del libro */
+    width: 300px; /* Ancho fijo para la portada del libro */
+    height: auto;
+    perspective: 1000px; /* Para efectos 3D */
+    margin-bottom: 30px; /* Espacio en móvil */
+}
+
+.book-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+    transform: rotateY(-10deg) rotateX(5deg); /* Inclinación sutil */
+    transition: transform 0.5s ease;
+}
+
+.book-visual img:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.02); /* Enderezar y agrandar al pasar el ratón */
+}
+
+.book-visual .video-thumbnail {
+    position: absolute;
+    bottom: -30px; /* Superpuesto debajo de la imagen del libro */
+    right: -50px;
+    width: 220px;
+    height: 120px;
+    background-color: #000;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 991px) {
+    .book-visual .video-thumbnail {
+        position: static; /* En móvil, debajo de la imagen */
+        margin: 30px auto 0;
+        width: 90%;
+        height: 180px;
+    }
+}
+
+
+.book-visual .video-thumbnail:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 8px 8px 25px rgba(0,0,0,0.4);
+}
+
+.book-visual .video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
+}
+
+.book-visual .video-thumbnail:hover img {
+    filter: brightness(0.9);
+}
+
+.book-visual .video-thumbnail .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.book-visual .video-thumbnail .play-button:hover {
+    background: rgba(255,111,0,0.8); /* Cambiar a color acento al pasar el ratón */
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.book-text {
+    max-width: 600px;
+}
+
+.book-text h2 {
+    font-size: 3.2em;
+    text-align: left; /* Alineado a la izquierda */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+@media (max-width: 991px) {
+    .book-text h2 {
+        text-align: center;
+    }
+}
+
+.book-text .subtitle {
+    font-size: 1.4em;
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    text-align: left;
+}
+@media (max-width: 991px) {
+    .book-text .subtitle {
+        text-align: center;
+    }
+}
+
+
+.book-text p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--text-color-dark);
+    text-align: left;
+}
+@media (max-width: 991px) {
+    .book-text p {
+        text-align: center;
+    }
+}
+
+.book-text p strong {
+    color: var(--primary-color);
+}
+
+.book-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+}
+
+@media (max-width: 991px) {
+    .book-buttons {
+        justify-content: center; /* Centra los botones en móvil */
+    }
+}
+
+.book-buttons .btn {
+    padding: 15px 35px;
+    font-size: 1.1em;
+    border-radius: 50px;
+}
+
+/* --- Contact Section --- */
+.contact-section h2 {
+    margin-bottom: 60px;
+    color: var(--text-color-light); /* En fondo oscuro */
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: flex-start; /* Alinea los elementos al inicio */
+}
+
+@media (min-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.contact-info h3 {
+    text-align: left;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: rgba(255,255,255,0.9);
+}
+
+.contact-info p i {
+    margin-right: 15px;
+    color: var(--accent-color);
+    font-size: 1.2em;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    font-size: 1.8em;
+    color: var(--text-color-light);
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.contact-form h3 {
+    text-align: left;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--text-color-light);
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255,255,255,0.2);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form .btn-primary {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+.contact-form .btn-primary i {
+    margin-left: 10px;
+}
+
+.map-container {
+    margin-top: 80px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+
+/* --- Footer Mejorado --- */
+.main-footer {
+    background-color: var(--footer-bg);
+    color: var(--text-color-light);
+    padding: 60px 0 20px;
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.main-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.main-footer h3 {
+    color: #fff;
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.main-footer p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+}
+
+.main-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-footer ul li {
+    margin-bottom: 10px;
+}
+
+.main-footer ul li a {
+    color: rgba(255,255,255,0.8);
+    transition: color var(--transition-speed) ease;
+}
+
+.main-footer ul li a:hover {
+    color: var(--accent-color);
+}
+
+.footer-social.social-links {
+    margin-top: 20px;
+    justify-content: flex-start; /* Alinea los íconos a la izquierda */
+}
+
+.footer-social.social-links a {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.5em;
+}
+
+.footer-social.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 20px;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1em;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.newsletter-form .btn-primary {
+    border-radius: 0 5px 5px 0;
+    padding: 12px 20px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+    font-size: 0.85em;
+    color: rgba(255,255,255,0.6);
+}
+
+/* --- Scroll Animations (Asegúrate de que estas clases estén en tu js/scroll-animations.js) --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific animations for more variety */
+.fade-in-up {
+    transform: translateY(50px);
+}
+.fade-in-up.visible {
+    transform: translateY(0);
+}
+
+.left-to-right {
+    transform: translateX(-50px);
+}
+.left-to-right.visible {
+    transform: translateX(0);
+}
+
+.right-to-left {
+    transform: translateX(50px);
+}
+.right-to-left.visible {
+    transform: translateX(0);
+}
+
+.zoom-in {
+    transform: scale(0.9);
+}
+.zoom-in.visible {
+    transform: scale(1);
+}
+
+
+/* --- Responsive Design (Media Queries) --- */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    h3 { font-size: 1.8em; }
+
+    .main-nav {
+        display: none; /* Oculta el menú principal en pantallas pequeñas */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px; /* Debajo del header */
+        left: 0;
+        background-color: var(--header-bg);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+    }
+
+    .main-nav.active {
+        display: flex; /* Muestra el menú cuando está activo */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        display: block;
+        font-size: 1.1em;
+    }
+
+    .main-nav ul li a::after {
+        display: none; /* Deshabilita el subrayado animado en móvil */
+    }
+
+    .main-nav .donate-btn-container {
+        margin-top: 20px;
+        margin-left: 0; /* Centra el botón de donar en móvil */
+    }
+    .main-nav .donate-btn-container .btn-donate {
+        width: 80%; /* Hacer el botón de donar más ancho */
+        margin: 0 auto;
+    }
+
+    .menu-toggle {
+        display: block; /* Muestra el botón de menú en pantallas pequeñas */
+    }
+
+    .hero-section .hero-content h1 {
+        font-size: 3em;
+    }
+    .hero-section .hero-content .tagline {
+        font-size: 1.3em;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+    .about-image {
+        order: -1; /* Mueve la imagen arriba en móvil */
+        margin-bottom: 30px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr; /* Una columna para el blog en móvil */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .donations-section .donation-content h2 {
+        font-size: 2.5em;
+    }
+    .donations-section .donation-content p {
+        font-size: 1em;
+    }
+    .donations-section .donation-content .big-btn {
+        font-size: 1.2em;
+        padding: 15px 30px;
+    }
+
+    .book-promo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .book-promo-content .book-text h2,
+    .book-promo-content .book-text .subtitle,
+    .book-promo-content .book-text p {
+        text-align: center;
+    }
+
+    .book-visual .video-thumbnail {
+        position: static;
+        margin: 30px auto 0;
+        width: 90%;
+        height: 180px;
+    }
+    .book-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .book-buttons .btn {
+        width: 90%; /* Hace que los botones sean más anchos en móvil */
+    }
+
+
+    .main-footer .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .main-footer .footer-grid h3,
+    .main-footer .footer-social.social-links {
+        justify-content: center; /* Centrar elementos en el footer móvil */
+        text-align: center;
+    }
+    .main-footer .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-footer .newsletter-form input[type="email"] {
+        width: 80%;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+    .main-footer .newsletter-form .btn-primary {
+        width: 80%;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
+
+    .hero-section .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-section .hero-content .tagline {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.8em;
+    }
+
+    .book-promo-content .book-text h2 {
+        font-size: 2em;
+    }
+    .book-promo-content .book-text .subtitle {
+        font-size: 1.1em;
+    }
+}
